@@ -43,6 +43,7 @@ export default function NewDishes() {
                           <Divider width="2" height="24" bg="#d9d9d9" />
                           <Typography className="price">$12</Typography>
                         </Stack>
+
                         <Stack>
                           <Typography className="views">
                             20 <VisibilityIcon 
@@ -51,6 +52,7 @@ export default function NewDishes() {
                         </Stack>
                       </Stack>
                     </CardOverflow>
+                    
                   </Card>
                 );
             })
