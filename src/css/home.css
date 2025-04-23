@@ -114,6 +114,7 @@
 }
 
 /** New Products **/
+
 .homepage .main {
     margin-top: 45px;
     display: flex;
@@ -219,6 +220,26 @@
     color: #e3c08d;
 }
 
+/** ADVERTISEMENT **/
+
+.homepage .ads-restaurant-frame {
+    margin-top: 45px;
+    width: 100%;
+    height: 693px;
+    display: flex;
+    overflow: hidden;
+    transform: perspective(0px);
+    box-shadow: -3px 0px 20px 14px #34343490;
+}
+
+.homepage .ads-restaurant-frame .ads-video {
+    width: 100%;
+    background: #0c0e12;
+    display: flex;
+    box-shadow: 0x -8px 90px rgb(215 215 255);
+    transform: scale(1.5);
+    overflow: hidden;
+}
 
 /** EVENTS **/
 
@@ -407,4 +428,3 @@
     background: #343434;
     border-radius: 50%;
   }
-  
