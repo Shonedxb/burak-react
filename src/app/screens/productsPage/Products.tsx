@@ -115,7 +115,7 @@ export default function Products() {
                                                     <Badge badgeContent={20} color="secondary">
                                                         <RemoveRedEyeIcon
                                                             sx={{
-                                                                color: 20 ? "gray" : "white",
+                                                                color: 0 ? "gray" : "white",
                                                             }}
                                                         />
                                                     </Badge>
