@@ -1,5 +1,5 @@
 import { Member } from "./member";
-import { Product } from "./produc";
+import { Product } from "./product";
 
 /** REACT APP STATE **/
 export interface AppRootState {
