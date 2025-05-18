@@ -4,14 +4,14 @@ export interface Product {
     _id: string;
     productStatus: ProductStatus;
     productCollection: ProductCollection;
-    productName: String;
-    productPrice: Number;
-    productLeftCount: Number;
+    productName: string;
+    productPrice: number;
+    productLeftCount: number;
     productSize: ProductSize;
-    productVolume: Number;
-    productDesc?: String;
-    productImages: String[];
-    productViews: Number;
+    productVolume: number;
+    productDesc?: string;
+    productImages: string[];
+    productViews: number;
     createdAt: Date;
     updatedAt: Date;
 }
