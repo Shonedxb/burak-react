@@ -89,7 +89,7 @@ export default function Products() {
 
     /** CHOOSE PRODUCT ID for URL HANDLER **/
     const chooseDishHandler = (id: string) => {
-        history.push(`/products/${id}`);Handlers
+        history.push(`/products/${id}`);
     };
 
     return (
