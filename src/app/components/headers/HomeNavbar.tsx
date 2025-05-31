@@ -18,24 +18,6 @@ export default function HomeNavbar(props: HomeNavbarProps) {
     const { cartItems, onAdd, onRemove, onDelete, onDeleteAll, setSignupOpen, setLoginOpen } = props;
     const authMember = null;
 
-
-    // const [count, setCount] = useState<number>(0);
-    // const [value, setvalue] = useState<boolean>(true);
-    // useEffect(() => {
-    //     console.log("componentDidMount", count); //DATA FETCH
-    //     setCount(count + 1);
-    //     return () => {
-    //         console.log("componentWillUnmount");
-    //     };
-    // }, [value]);
-
-    /** HANDLERS **/
-    // test purpose only 
-    // const buttonHandler = () => {
-    //     setvalue(!value);
-    // }
-
-
     return (
         <div className="home-navbar">
             <Container className="navbar-container">
