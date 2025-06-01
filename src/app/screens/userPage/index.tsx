@@ -49,7 +49,10 @@ export default function UserPage() {
                 </div>
                 <span className={"order-user-name"}>{authMember?.memberNick}</span>
                 <span className={"order-user-prof"}>{authMember?.memberType}</span>
-                <span className={"order-user-prof"}>{authMember?.memberAddress ? authMember.memberAddress : "No Address"}</span>
+                <span className={"order-user-prof"}>
+                {authMember?.memberAddress 
+                  ? authMember.memberAddress 
+                  : "No Address"}</span>
               </Box>
               <Box className={"user-media-box"}>
                 <FacebookIcon />
