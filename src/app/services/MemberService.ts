@@ -1,6 +1,7 @@
 import axios from "axios";
 import { serverApi } from "../../lib/config";
 import { LoginInput, Member, MemberInput } from "../../lib/types/member";
+import { Logout } from '@mui/icons-material';
 
 class MemberService {
     private readonly path: string;
@@ -64,8 +65,21 @@ class MemberService {
             localStorage.setItem("memberData", JSON.stringify(member));
 
             return member;
-        } catch(err) {
+        }   catch(err) {
             console.log("Error, login:", err);
+            throw err;
+        }
+    }
+
+    public async logout(): Promise<void> {
+        try {
+            const url = this.path + "/member/logout";
+            const result = await axios.post(url, {}, { withCredentials: true });
+            console.log("logout:", result);
+
+            localStorage.removeItem("memberData");
+        }   catch(err) {
+            console.log("Error, logout:", err);
             throw err;
         }
     }
