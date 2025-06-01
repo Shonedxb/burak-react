@@ -3,7 +3,6 @@ import { Container, Stack, Box } from "@mui/material";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import TabContext from "@mui/lab/TabContext";
-import TabPanel from "@mui/lab/TabPanel";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import PausedOrders from "./PausedOrders";
 import ProcessOrders from "./ProcessOrders";
@@ -12,9 +11,10 @@ import { useDispatch } from "react-redux";
 import { Dispatch } from "@reduxjs/toolkit";
 import { setPausedOrders, setProcessOrders, setFinishedOrders } from "./slice";
 import { Order, OrderInquiry } from "../../../lib/types/orders";
-import "../../../css/orders.css";
 import { OrderStatus } from '../../../lib/enums/order.enum';
 import OrderService from "../../services/OrderService";
+import { useGlobals } from "../../hooks/useGlobals";
+import "../../../css/orders.css";
 
 const actionDispatch = (dispatch: Dispatch) => ({
   setPausedOrders: (data: Order[]) => dispatch(setPausedOrders(data)),
@@ -24,6 +24,7 @@ const actionDispatch = (dispatch: Dispatch) => ({
 
 export default function OrdersPage() {
     const { setPausedOrders, setProcessOrders, setFinishedOrders } = actionDispatch(useDispatch());
+    const { orderBuilder } = useGlobals();
     const [value, setValue] = useState("1"); // panel by default 1
     const [orderInquiry, setOrderInquiry] = useState<OrderInquiry>({
         page: 1,
@@ -49,7 +50,7 @@ export default function OrdersPage() {
         .then((data) => setFinishedOrders(data))
         .catch((err) => console.log(err));
 
-    },  [orderInquiry]);
+    },  [orderInquiry, orderBuilder]);
 
 
     //** HANDLERS **//
@@ -58,53 +59,45 @@ export default function OrdersPage() {
     };
     
     return (
-        <div className="order-page">
+        <div className={"order-page"}>
             <Container className="order-container">
-                <Stack className="order-left">
+                <Stack className={"order-left"}>
                     <TabContext value={value}>
-                        <Box className="order-new-frame">
+                        <Box className={"order-new-frame"}>
                             <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
                                 <Tabs
                                     value={value}
                                     onChange={handleChange}
                                     aria-label="basic tabs example"
-                                    className="table_list"
+                                    className={"table_list"}
                                 >
-                                    <Tab label="PAUSED ORDERS" value="1" />
-                                    <Tab label="PROCESS ORDERS" value="2" />
-                                    <Tab label="FINISHED ORDERS" value="3" />
+                                    <Tab label="PAUSED ORDERS" value={"1"} />
+                                    <Tab label="PROCESS ORDERS" value={"2"} />
+                                    <Tab label="FINISHED ORDERS" value={"3"} />
                                 </Tabs>
                             </Box>
                         </Box>
                         <Stack className="order-main-content">
-                            {/* Added TabPanel components with matching values */}
-                            <TabPanel value="1">
-                                <PausedOrders />
-                            </TabPanel>
-                            <TabPanel value="2">
-                                <ProcessOrders />
-                            </TabPanel>
-                            <TabPanel value="3">
+                                <PausedOrders setValue={setValue}/>
+                                <ProcessOrders setValue={setValue}/>
                                 <FinishedOrders />
-                            </TabPanel>
                         </Stack>
                     </TabContext>
                 </Stack>
 
-                <Stack className="order-right">
-                    <Box className="order-info-box">
-                        <Box className="member-box">
-                            <div className="order-user-img">
+                <Stack className={"order-right"}>
+                    <Box className={"order-info-box"}>
+                        <Box className={"member-box"}>
+                            <div className={"order-user-img"}>
                                 <img
-                                    src="/icons/default-user.svg"
-                                    className="order-user-avatar"
-                                    alt="User avatar"
+                                    src={"/icons/default-user.svg"}
+                                    className={"order-user-avatar"}
                                 />
-                                <div className="order-user-icon-box">
+                                <div className={"order-user-icon-box"}>
                                     <img
-                                        src="/icons/default-user.svg"
-                                        className="order-user-prof-img"
-                                        alt="User profile"
+                                        src={"/icons/default-user.svg"}
+                                        className={"order-user-prof-img"}
+                                        alt={"User profile"}
                                     />
                                 </div>
                             </div>
