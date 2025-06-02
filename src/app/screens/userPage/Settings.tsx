@@ -32,23 +32,31 @@ export function Settings() {
   // / HANDLERS /
 
   const memberNickHandler = (e: T) => {
-    memberUpdateInput.memberNick = e.target.value;
-    setMemberUpdateInput({ ...memberUpdateInput });
+    setMemberUpdateInput({
+      ...memberUpdateInput,
+      memberNick: e.target.value
+    });
   };
 
   const memberPhoneHandler = (e: T) => {
-    memberUpdateInput.memberPhone = e.target.value;
-    setMemberUpdateInput({ ...memberUpdateInput });
+    setMemberUpdateInput({
+      ...memberUpdateInput,
+      memberPhone: e.target.value
+    });
   };
 
   const memberAddressHandler = (e: T) => {
-    memberUpdateInput.memberAddress = e.target.value;
-    setMemberUpdateInput({ ...memberUpdateInput });
+    setMemberUpdateInput({
+      ...memberUpdateInput,
+      memberAddress: e.target.value
+    });
   };
 
   const memberDescriptionHandler = (e: T) => {
-    memberUpdateInput.memberDesc = e.target.value;
-    setMemberUpdateInput({ ...memberUpdateInput });
+    setMemberUpdateInput({
+      ...memberUpdateInput,
+      memberDesc: e.target.value
+    });
   };
 
   const handleSubmitButton = async () => {
@@ -65,6 +73,8 @@ export function Settings() {
 
       const member = new MemberService();
       const result = await member.updateMember(memberUpdateInput);
+      // Update both localStorage and state
+      localStorage.setItem("memberData", JSON.stringify(result));
       setAuthMember(result);
 
       await sweetTopSmallSuccessAlert("Modified successfully!", 700);

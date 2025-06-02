@@ -7,11 +7,16 @@ const ContextProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const cookies = new Cookies();
   if (!cookies.get("accessToken")) localStorage.removeItem("memberData");
 
-  const [authMember, setAuthMember] = useState<Member | null>(
+  const [authMember, _setAuthMember] = useState<Member | null>(
     localStorage.getItem("memberData")
       ? JSON.parse(localStorage.getItem("memberData") as string)
       : null
   );
+
+  const setAuthMember = (member: Member | null) => {
+    localStorage.setItem("memberData", JSON.stringify(member));
+    _setAuthMember(member);
+  };
   const [orderBuilder, setOrderBuilder] = useState<Date>(new Date());
   console.log("=== verify ===");
 

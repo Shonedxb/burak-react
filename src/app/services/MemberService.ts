@@ -91,11 +91,11 @@ class MemberService {
   public async updateMember(input: MemberUpdateInput): Promise<Member> {
     try {
       const formData = new FormData();
-      formData.append("memberNick:", input.memberNick || "");
-      formData.append("memberPhone:", input.memberPhone || "");
-      formData.append("memberAddress:", input.memberAddress || "");
-      formData.append("memberDesc:", input.memberDesc || "");
-      formData.append("memberImage:", input.memberImage || "");
+      formData.append("memberNick", input.memberNick || "");
+      formData.append("memberPhone", input.memberPhone || "");
+      formData.append("memberAddress", input.memberAddress || "");
+      formData.append("memberDesc", input.memberDesc || "");
+      formData.append("memberImage", input.memberImage || "");
 
       const result = await axios(`${serverApi}/member/update`, {
         method: "POST",
