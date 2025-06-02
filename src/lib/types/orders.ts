@@ -42,5 +42,3 @@ export interface OrderUpdateInput {
     orderId: string;
     orderStatus: OrderStatus;
 }
-
-

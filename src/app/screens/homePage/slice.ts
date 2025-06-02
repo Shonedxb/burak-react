@@ -7,7 +7,7 @@ const initialState: HomePageState = {
     topUsers: [],
 };
 
-const homePageSlice = createSlice({
+const homePageSlice  = createSlice({
     name: "homePage",
     initialState,
     reducers: {
@@ -23,8 +23,7 @@ const homePageSlice = createSlice({
     },
 });
 
-export const { setPopularDishes, setNewDishes, setTopUsers } = 
-    homePageSlice.actions;
+export const {setPopularDishes, setNewDishes, setTopUsers} = homePageSlice.actions;
 
 const HomePageReducer = homePageSlice.reducer;
 export default HomePageReducer;

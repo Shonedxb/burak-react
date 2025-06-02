@@ -54,6 +54,7 @@ export default function AuthenticationModal(props: AuthenticationModalProps) {
   /** HANDLERS **/
 
   const handleUsername = (e: T) => {
+    console.log(e.target.value);
     setMemberNick(e.target.value);
   };
   const handlePhone = (e: T) => {
@@ -62,30 +63,29 @@ export default function AuthenticationModal(props: AuthenticationModalProps) {
   const handlePassword = (e: T) => {
     setMemberPassword(e.target.value);
   };
+
   const handlePasswordKeyDown = (e: T) => {
     if (e.key === "Enter" && signupOpen) {
       handleSignupRequest().then();
-    } else if(e.key === "Enter" && loginOpen) {
+    } else if (e.key === "Enter" && loginOpen) {
       handleLoginRequest().then();
     }
   };
-  
   const handleSignupRequest = async () => {
     try {
-      const isFulfill =
+      console.log("inputs:", memberNick, memberPhone, memberPassword);
+      const isfullfil =
         memberNick !== "" && memberPhone !== "" && memberPassword !== "";
-      if (!isFulfill) throw new Error(Messages.error3);
+      if (!isfullfil) throw new Error(Messages.error3);
 
       const signupInput: MemberInput = {
         memberNick: memberNick,
         memberPhone: memberPhone,
         memberPassword: memberPassword,
       };
-
       const member = new MemberService();
       const result = await member.signup(signupInput);
 
-      //Saving Authenticated Users
       setAuthMember(result);
       handleSignupClose();
     } catch (err) {
@@ -94,18 +94,16 @@ export default function AuthenticationModal(props: AuthenticationModalProps) {
       sweetErrorHandling(err).then();
     }
   };
-
   const handleLoginRequest = async () => {
     try {
-      const isFulfill =
-        memberNick !== "" && memberPassword !== "";
-      if (!isFulfill) throw new Error(Messages.error3);
+      console.log("inputs:", memberNick, memberPassword);
+      const isfullfil = memberNick !== "" && memberPassword !== "";
+      if (!isfullfil) throw new Error(Messages.error3);
 
       const loginInput: LoginInput = {
         memberNick: memberNick,
         memberPassword: memberPassword,
       };
-
       const member = new MemberService();
       const result = await member.login(loginInput);
 
